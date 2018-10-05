@@ -1,0 +1,158 @@
+<style>
+	.flip-card-container{
+		padding:20px 20px 20px 20px;
+		display:flex;
+		flex-direction:row;
+		justify-content:space-evenly;
+		flex-wrap:wrap
+	}
+	.flip-card-wrapper{
+		width:330px;
+		height:400px;
+		perspective:1000px;
+		margin:10px 0 10px 0!important;
+	}
+	.flip-card-inner{
+		position:relative;
+		width:100%;
+		height:100%;
+		transition-property:transform;
+		transform-style:preserve-3d;
+		transition-duration:1.5s;
+		transition-delay:0.1s;
+		transition-timing-function:cubic-bezier(0.18, 0.89, 0.34, 1.13)
+	}
+	
+	.flip{
+		transform:rotateY(180deg);
+	}
+
+	.flip-card{
+		display:flex;
+		flex-direction:column;
+		align-items:center;
+		justify-content:center;
+		padding:10px;
+		box-shadow: 0 0 10px black;
+		backface-visibility:hidden;
+		background-size:cover;
+		background-position:center;
+		background-repeat: no-repeat;
+		border-radius:20px;
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		cursor:pointer;
+		user-select: none
+	}
+	.flip-card-back{
+		transform:rotateY(180deg);
+		background-color:#ffcc00;
+		color:black
+	}
+	.flip-card-front{
+		background-color:#eee;
+		color:white;
+	}
+	.flip-card-front > *{
+		color:inherit;
+	}
+	
+	@media only screen and (max-width:600px){
+		.f-navlink-wrapper{
+			display:none;
+		}
+		.cookie-bar{
+			height:65px!important;
+		}
+		.cookie-bar > *{
+			font-size:12px;
+		}
+	}
+
+	}
+	.flippr-logo{
+		cursor:pointer;
+	}
+
+	.cookie-bar{
+		font-size:15px;
+		width:100%;
+		padding:10px;
+		position:fixed;
+		bottom:0;
+		left:0;
+		background-color: rgba(0,0,0,0.7);
+		height:50px;
+		color:white;
+		display:flex;
+		flex-direction:row;
+		align-items:center;
+		justify-content:space-between;
+		
+	}
+
+
+</style>
+<!-- Filter -->
+<h1 style="color:black!important;margin:100px 0 0 100px">Art cards (126)</h1>
+
+<!-- flipcards -->
+<div class="container flip-card-container">
+{{#if flipcards}}
+{{#each flipcards}}
+<div class="flip-card-wrapper">
+	<div class="flip-card-inner">
+		<div class="flip-card flip-card-back">
+			<h3>Metha</h3>
+			<p class="lead">{{subtitle}}</p>
+		</div>
+		<div style="background-image:url('{{url}}')" class="flip-card flip-card-front">
+			<h2>{{title}}</h2>
+			<p class="lead">{{subtitle}}</p>
+		</div>
+	</div>
+</div>
+{{/each }}
+{{else}}
+<div class="flip-card-wrapper">
+	<div class="flip-card-inner">
+		<div class="flip-card flip-card-back">
+			<h4>Hi {{name}}</h4>
+			<p class="lead">How about you add some flashcards</p>
+		</div>
+		<div class="flip-card flip-card-front">
+			<h4>Hi {{name}}</h4>
+			<p class="lead">How about you add some flashcards</p>
+		</div>
+	</div>
+</div>
+{{/if}}
+</div>
+<div class="cookie-bar">
+	<p style="color:white">Accessing our website tells us you are happy to receive all our cookies. However you can change your cookie settings at any time</p><a id="close-cookie-bar" style="color:#ffcc00" href="#">Close</a>
+</div>
+<script>
+	
+	let flipCards = document.querySelectorAll('.flip-card-inner')
+
+	let closeCookieBar = document.querySelector('#close-cookie-bar')
+	
+	flipCards.forEach((card)=>{
+		card.addEventListener('click',function(){
+		this.classList.toggle('flip')
+	})
+	})
+
+	closeCookieBar.onclick = function(){
+		document.querySelector('.cookie-bar').style.display = 'none'
+	}
+	$(document).ready(function(){
+		$('.flip-card-container').sortable()
+	})
+
+
+</script>
+
