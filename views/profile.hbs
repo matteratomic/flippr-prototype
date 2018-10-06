@@ -1,236 +1,158 @@
 <style>
-	.flip-card-container{
-		padding:20px 20px 20px 20px;
-		display:flex;
+	.f-profile-container{
+		padding:100px 20px 20px 100px;
+		/* display:flex;
 		flex-direction:row;
 		justify-content:space-evenly;
-		flex-wrap:wrap
+		flex-wrap:wrap*/
 	}
-	.flip-card-wrapper{
-		width:330px;
-		height:400px;
-		perspective:1000px;
-		margin:10px 0 10px 0!important;
+	.f-profile-stats-section{
+		display:flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content:space-between;
 	}
-	.flip-card-inner{
-		position:relative;
-		width:100%;
-		height:100%;
-		transition-property:transform;
-		transform-style:preserve-3d;
-		transition-duration:1.5s;
-		transition-delay:0.1s;
-		transition-timing-function:cubic-bezier(0.18, 0.89, 0.34, 1.13)
+	.f-profile-avatar{
+			display:flex;
+			align-items: center;
+			justify-content:center;
+			min-width:210px;
+			height:210px;
+			border-radius:100px;
+			margin-right:25px;
+			box-shadow:0 0 5px black;
+			background-size:cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-color: #eee;
+		}
+		.f-avatar-camera-dim{
+			display:flex;
+			align-items: center;
+			flex-direction:column;
+			justify-content:center;
+			border-radius:100px;
+			width:100%;
+			height:100%;
+			background-color:#fda800;
+			opacity:0;
+			transition-property:opacity;
+			transition-duration:0.5s;
+		}
+		.f-avatar-camera-dim:hover{
+			opacity:0.8
+		}
+
+	.f-profile-stats-wrapper{
+		display:flex!important;
+		flex-direction: row;
+		align-items: center;
+		justify-content:space-evenly;
 	}
-	
-	.flip{
-		transform:rotateY(180deg);
+	.f-profile-stats-wrapper > * {
+		width:150px;
+		height:100px;
+		margin: 0 5px 0 5px;
+		display:flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content:center;
 	}
 
-	.flip-card{
-		display:flex;
-		flex-direction:column;
-		align-items:center;
-		justify-content:center;
-		padding:10px;
-		box-shadow: 0 0 10px black;
-		backface-visibility:hidden;
-		background-size:cover;
-		background-position:center;
-		background-repeat: no-repeat;
-		border-radius:20px;
-		position:absolute;
-		top:0;
-		left:0;
-		width:100%;
-		height:100%;
+	.f-profile-username{
+
+	}
+
+	.f-profile-stats{
 		cursor:pointer;
-		user-select: none
+		transition-property:all;
+		transition-duration: 0.1s;
 	}
-	.flip-card-back{
-		transform:rotateY(180deg);
-		background-color:#ffcc00;
-		color:black
+	.f-profile-stats:hover{
+		transform:scale(1.1);
 	}
-	.flip-card-front{
-		background-color:#eee;
-		color:white;
+	.fa-2x:hover{
+		color:#fda800!important;
 	}
-	.flip-card-front > *{
-		color:inherit;
-	}
+
+
+	.f-profile-stats-likes{
 	
-	@media only screen and (max-width:600px){
-		.f-navlink-wrapper{
-			display:none;
+	}
+	.f-profile-stats-followers{
+		
+	}
+	.f-profile-stats-following{
+		
+	}
+	.f-profile-stats-count{
+		font-weight:bold;
+		margin-bottom:-3px;
+		color:#fda800;
+	}
+	@media (max-width:950px){
+		.f-profile-stats-section{
+		flex-direction: column;
+		align-items: center;
+		justify-content:space-evenly;
+	}
+		.f-profile-avatar{
+			margin-bottom:25px;
 		}
-		.cookie-bar{
-			height:65px!important;
+
+		.f-profile-username{
+		
 		}
-		.cookie-bar > *{
+		
+		.f-profile-stats-wrapper > * {
+			width:90px;
+		}
+
+		.f-profile-container{
+		padding:100px 20px 20px 20px;
+		}
+		.fa-2x{
+			font-size: 20px;
+		}
+		.f-profile-stats-description{
 			font-size:12px;
 		}
 	}
 
-	}
-	.flippr-logo{
-		cursor:pointer;
-	}
-
-	.cookie-bar{
-		font-size:15px;
-		width:100%;
-		padding:10px;
-		position:fixed;
-		bottom:0;
-		left:0;
-		background-color: rgba(0,0,0,0.7);
-		height:50px;
-		color:white;
-		display:flex;
-		flex-direction:row;
-		align-items:center;
-		justify-content:space-between;
-		
-	}
-	.f-search-section{
-		display:flex;
-		flex-direction:row;
-		align-items: center;
-		justify-content:space-between;
-	}
-	.f-search-category{
-			color:black!important;
-			margin:100px 0 0 100px
-		}
-	.f-search-bar{
-	display:flex;
-	height:40px;
-	width:250px;
-	margin:100px 10px 0 0;
-	border: 1px solid #666;
-	box-sizing:border-box;
-	padding:10px;
-	border-radius:30px;
-	background-color:#eee
-	}
-
-	.f-search-bar > input{
-		background-color:#eee
-	}
-
-
-	@media (max-width:600px){
-		.f-search-category{
-			margin:100px 0 0 20px;
-			font-size:25px;
-		}
-		.f-search-bar{
-		}
-	}
-
-	.f-back-to-top{
-		box-shadow: 0 0 10px black;
-		position:fixed;
-		bottom:10px;
-		right:10px;
-		width:50px;
-		height:50px;
-		border-radius:50px;
-		background-color:#fda800;
-		display:flex;
-		align-items:center;
-		justify-content: center;
-	}
-
-
 </style>
-<!-- Filter -->
-<div class="f-search-section">
-	<h1 class="f-search-category">Art cards (126)</h1>
-		<div  class="f-search-bar">
-			<i style="color:black;margin-right:5px" class="fa fa-search"></i>
-			<input type="search" placeholder="Search"/></div></div>
-
-<!-- flipcards -->
-<div class="container flip-card-container">
-{{#if flipcards}}
-{{#each flipcards}}
-<div class="flip-card-wrapper">
-	<div class="flip-card-inner">
-		<div class="flip-card flip-card-back">
-			<h3>Metha</h3>
-			<p class="lead">{{subtitle}}</p>
+<div class="f-profile-container">
+	 <!--Profile stats and page title-->
+	<div class="f-profile-stats-section">
+		<div style="background:url('{{avatar}}')" class="f-profile-avatar">
+			<div class="f-avatar-camera-dim">
+				<i style="color:white" class="fa fa-camera fa-2x"></i>
+				<p style="color:white">change profile pic</p>
+			</div>
 		</div>
-		<div style="background-image:url('{{url}}')" class="flip-card flip-card-front">
-			<h2>{{title}}</h2>
-			<p class="lead">{{subtitle}}</p>
-		</div>
-	</div>
-</div>
-{{/each }}
-{{else}}
-<div class="flip-card-wrapper">
-	<div class="flip-card-inner">
-		<div class="flip-card flip-card-back">
-			<h4>Hi {{name}}</h4>
-			<p class="lead">How about you add some flashcards</p>
-		</div>
-		<div class="flip-card flip-card-front">
-			<h4>Hi {{name}}</h4>
-			<p class="lead">How about you add some flashcards</p>
+		<h1 class="f-profile-username">{{appUser}}</h1>
+		<div class="f-profile-stats-wrapper">
+			<div class="f-profile-stats f-profile-stats-likes">
+				<i style="color:black" class="fa fa-thumbs-up fa-2x"></i>
+				<p class="f-profile-stats-count">300</p>
+				<p class="f-profile-stats-description">Likes</p>
+			</div>
+			<div class="f-profile-stats f-profile-stats-followers">
+				<i style="color:black" class="fa fa-users fa-2x"></i>
+				<p class="f-profile-stats-count">5501</p>
+				<p class="f-profile-stats-description">Followers</p>
+			</div>
+			<div class="f-profile-stats f-profile-stats-following">
+				<i style="color:black" class="fa fa-flag fa-2x"></i>
+				<p class="f-profile-stats-count">3214</p>
+				<p class="f-profile-stats-description">Following</p>
+			</div>
 		</div>
 	</div>
-</div>
-{{/if}}
-</div>
-<div class="f-back-to-top">
-	<i style="color:black" class="fa fa-arrow-up"></i>
-</div>
-<div class="cookie-bar">
-	<p style="color:white">Accessing our website tells us you are happy to receive all our cookies. However you can change your cookie settings at any time</p><a id="close-cookie-bar" style="color:#ffcc00" href="#">Close</a>
-</div>
-<script>
+
+	<!--Profile content-->
+	<div class="profile-content">
+		
+	</div>
+
 	
-	let flipCards = document.querySelectorAll('.flip-card-inner')
-
-	let closeCookieBar = document.querySelector('#close-cookie-bar')
-
-	let backToTop = document.querySelector('.f-back-to-top')
-
-	let searchBar = document.querySelector('.f-search-bar > input')
-	
-	flipCards.forEach((card)=>{
-		card.addEventListener('click',function(){
-		this.classList.toggle('flip')
-	})
-	})
-
-	closeCookieBar.onclick = function(){
-		document.querySelector('.cookie-bar').style.display = 'none'
-	}
-	
-	backToTop.onclick = function(){
-		window.scrollTo({top:0,left:0,behavior:'smooth'})
-	}
-
-	searchBar.onfocus = function(){
-		let searchWrapper = document.querySelector('.f-search-bar')
-		this.style.backgroundColor = "#fff"
-		searchWrapper.setAttribute('style',`border-color:#fda800;
-			box-shadow: 0 0 10px #ffc000;background-color:#fff`)
-	}
-	searchBar.onblur = function(){
-		let searchWrapper = document.querySelector('.f-search-bar')
-		this.style.backgroundColor = "#eee"
-		searchWrapper.setAttribute('style',`border-color:#666;
-		box-shadow: 0 0 0px #666;`)
-	}
-
-	$(document).ready(function(){
-		$('.flip-card-container').sortable()
-	})
-
-
-</script>
-
+</div>

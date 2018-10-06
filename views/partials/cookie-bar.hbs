@@ -1,0 +1,28 @@
+<style>
+	.cookie-bar{
+		font-size:15px;
+		width:100%;
+		padding:10px;
+		position:fixed;
+		bottom:0;
+		left:0;
+		background-color: rgba(0,0,0,0.7);
+		height:50px;
+		color:white;
+		display:flex;
+		flex-direction:row;
+		align-items:center;
+		justify-content:space-between;
+		
+	}
+</style>
+<div class="cookie-bar">
+	<p style="color:white">Accessing our website tells us you are happy to receive all our cookies. However you can change your cookie settings at any time</p><a id="close-cookie-bar" style="color:#ffcc00" href="#">Close</a>
+</div>
+<script type="text/javascript">
+	let closeCookieBar = document.querySelector('#close-cookie-bar')
+
+	closeCookieBar.onclick = function(){
+		document.querySelector('.cookie-bar').style.display = 'none'
+	}
+</script>
