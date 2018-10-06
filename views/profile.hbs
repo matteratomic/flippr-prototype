@@ -93,11 +93,64 @@
 		justify-content:space-between;
 		
 	}
+	.f-search-section{
+		display:flex;
+		flex-direction:row;
+		align-items: center;
+		justify-content:space-between;
+	}
+	.f-search-category{
+			color:black!important;
+			margin:100px 0 0 100px
+		}
+	.f-search-bar{
+	display:flex;
+	height:40px;
+	width:250px;
+	margin:100px 10px 0 0;
+	border: 1px solid #666;
+	box-sizing:border-box;
+	padding:10px;
+	border-radius:30px;
+	background-color:#eee
+	}
+
+	.f-search-bar > input{
+		background-color:#eee
+	}
+
+
+	@media (max-width:600px){
+		.f-search-category{
+			margin:100px 0 0 20px;
+			font-size:25px;
+		}
+		.f-search-bar{
+		}
+	}
+
+	.f-back-to-top{
+		box-shadow: 0 0 10px black;
+		position:fixed;
+		bottom:10px;
+		right:10px;
+		width:50px;
+		height:50px;
+		border-radius:50px;
+		background-color:#fda800;
+		display:flex;
+		align-items:center;
+		justify-content: center;
+	}
 
 
 </style>
 <!-- Filter -->
-<h1 style="color:black!important;margin:100px 0 0 100px">Art cards (126)</h1>
+<div class="f-search-section">
+	<h1 class="f-search-category">Art cards (126)</h1>
+		<div  class="f-search-bar">
+			<i style="color:black;margin-right:5px" class="fa fa-search"></i>
+			<input type="search" placeholder="Search"/></div></div>
 
 <!-- flipcards -->
 <div class="container flip-card-container">
@@ -131,6 +184,9 @@
 </div>
 {{/if}}
 </div>
+<div class="f-back-to-top">
+	<i style="color:black" class="fa fa-arrow-up"></i>
+</div>
 <div class="cookie-bar">
 	<p style="color:white">Accessing our website tells us you are happy to receive all our cookies. However you can change your cookie settings at any time</p><a id="close-cookie-bar" style="color:#ffcc00" href="#">Close</a>
 </div>
@@ -139,6 +195,10 @@
 	let flipCards = document.querySelectorAll('.flip-card-inner')
 
 	let closeCookieBar = document.querySelector('#close-cookie-bar')
+
+	let backToTop = document.querySelector('.f-back-to-top')
+
+	let searchBar = document.querySelector('.f-search-bar > input')
 	
 	flipCards.forEach((card)=>{
 		card.addEventListener('click',function(){
@@ -149,6 +209,24 @@
 	closeCookieBar.onclick = function(){
 		document.querySelector('.cookie-bar').style.display = 'none'
 	}
+	
+	backToTop.onclick = function(){
+		window.scrollTo({top:0,left:0,behavior:'smooth'})
+	}
+
+	searchBar.onfocus = function(){
+		let searchWrapper = document.querySelector('.f-search-bar')
+		this.style.backgroundColor = "#fff"
+		searchWrapper.setAttribute('style',`border-color:#fda800;
+			box-shadow: 0 0 10px #ffc000;background-color:#fff`)
+	}
+	searchBar.onblur = function(){
+		let searchWrapper = document.querySelector('.f-search-bar')
+		this.style.backgroundColor = "#eee"
+		searchWrapper.setAttribute('style',`border-color:#666;
+		box-shadow: 0 0 0px #666;`)
+	}
+
 	$(document).ready(function(){
 		$('.flip-card-container').sortable()
 	})

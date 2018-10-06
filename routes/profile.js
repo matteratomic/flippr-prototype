@@ -27,6 +27,5 @@ exports = module.exports = function(req,res){
 	subtitle:`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, beatae.
 	`},
 	]
-console.log(res.locals.section)
 	res.render('profile',res.locals)
 }
