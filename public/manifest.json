@@ -1,0 +1,16 @@
+{
+  "short_name": "Flippr",
+  "name": "Flippr",
+  "icons": [
+    {
+      "src": "/assets/logo.png",
+      "type": "image/png",
+      "sizes": "200x200"
+    },
+  ],
+  "start_url": "/",
+  "background_color": "#fff",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#000"
+}
