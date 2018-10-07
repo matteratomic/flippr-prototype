@@ -56,7 +56,8 @@ avatar:
 
 
 router.get('/',(req,res)=>{
-	res.render('login')
+	res.locals.section = 'login'
+	res.render('login',res.locals)
 })
 
 router.post('/login',(req,res)=>{

@@ -155,12 +155,19 @@
 		display:flex;
 		flex-direction: row;
 		align-items: center;
-		justify-content:space-evenly;
-		flex-wrap: wrap;
-		padding-top:30px
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		padding-top:30px;
 	}
+
+	.f-collections-wrapper > * {
+		flex:0 0 auto;
+		margin-right:10px!important;
+		padding:20px
+	}
+
+
 	.f-collections-heading{
-		
 		display:flex;
 		flex-direction: row;
 		align-items: center;
@@ -192,6 +199,17 @@
 		background-color:#eee
 	}
 @media (max-width:950px){
+
+	.f-collections-wrapper::-webkit-scrollbar {
+    	
+    	 -webkit-overflow-scrolling:touch;
+
+  		}
+
+  	.f-collections-wrapper > * {
+		
+  	}
+
 	.f-collections-heading{
 		flex-direction: row;
 		flex-wrap: wrap-reverse;
@@ -251,12 +269,16 @@
 			<input type="search" placeholder="Search"/>
 		</div>
 		</div>
-			<h3>Art(3)</h3>
+	{{#each flashcards}}
+		<h3>{{@key}} ({{this.length}})</h3>
 		<div class="f-collections-wrapper">
-			{{#each flashcards.art}}
-			{{> flip-card}}
+			{{#each this}}
+				{{> flip-card}}
 			{{/each}}
 		</div>
+	{{/each}}
+		
+
 	</div>
 </div>
 <script>

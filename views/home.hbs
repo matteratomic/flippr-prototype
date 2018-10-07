@@ -109,24 +109,7 @@
 			margin:100px 0 0 20px;
 			font-size:25px;
 		}
-		.f-search-bar{
-		}
 	}
-
-	.f-back-to-top{
-		box-shadow: 0 0 10px black;
-		position:fixed;
-		bottom:10px;
-		right:10px;
-		width:50px;
-		height:50px;
-		border-radius:50px;
-		background-color:#fda800;
-		display:flex;
-		align-items:center;
-		justify-content: center;
-	}
-
 
 </style>
 <!-- Filter -->
@@ -168,16 +151,9 @@
 </div>
 {{/if}}
 </div>
-<div class="f-back-to-top">
-	<i style="color:black" class="fa fa-arrow-up"></i>
-</div>
-
 <script>
 	
 	let flipCards = document.querySelectorAll('.flip-card-inner')
-
-	let backToTop = document.querySelector('.f-back-to-top')
-
 	let searchBar = document.querySelector('.f-search-bar > input')
 	
 	flipCards.forEach((card)=>{
@@ -185,12 +161,8 @@
 		this.classList.toggle('flip')
 	})
 	})
-
 	
 	
-	backToTop.onclick = function(){
-		window.scrollTo({top:0,left:0,behavior:'smooth'})
-	}
 
 	searchBar.onfocus = function(){
 		let searchWrapper = document.querySelector('.f-search-bar')

@@ -6,7 +6,7 @@ email:"matteratomic@gmail.com",
 password:"bacon",
 avatar:"https://pbs.twimg.com/profile_images/1028197344444116992/eS2p6w9f_400x400.jpg",
 flashcards:{
-	art:[
+	Art:[
 		{url:"https://images.unsplash.com/photo-1530900381846-cd345b083d83?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=61364c47e27bc11fed40dc7ca21d0923&auto=format&fit=crop&w=751&q=80",
 	title:"What is a table in Kikuyu",
 	subtitle:`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, beatae.
@@ -20,7 +20,7 @@ flashcards:{
 	subtitle:`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, beatae.
 	`},
 	],
-	german:[
+	German:[
 		{url:"https://images.unsplash.com/photo-1532708773901-d9468eed9135?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9c6a5c069b64266f649e561ea09aec3d&auto=format&fit=crop&w=401&q=80",
 	title:"Lorem ipsum dolor sit",
 	subtitle:`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, beatae.

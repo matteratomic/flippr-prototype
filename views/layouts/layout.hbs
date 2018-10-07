@@ -36,6 +36,12 @@
     {{else}}
     {{> cookie-bar}}
     {{/if}}
+    
+    {{#ifeq section "login"}}
+    {{else}}
+    {{> scroll-to-top}}
+    {{/ifeq}}
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
