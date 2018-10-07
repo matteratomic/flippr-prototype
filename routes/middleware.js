@@ -25,7 +25,8 @@ let checkCookies = function(req,res,next){
 
 let sign = function(user){
 	return new Promise((resolve,reject)=>{
-		jwt.sign(user,"mysecret",(err,token)=>{
+		let {username,password,email,avatar} = user
+		jwt.sign({username,password,email,avatar},"mysecret",(err,token)=>{
 		if(err) reject(err)
 			resolve(token)
 		})
@@ -44,8 +45,8 @@ let authenticate = function(req){
 let verifyToken = function(req,res,next){
 	authenticate(req)
 		.then((user)=>{
-			res.locals.appUser = user.username
-			res.locals.avatar = user.avatar
+			let {password,...userData} = user
+			res.locals.userData = userData
 
 		})
 		.then(()=>next())

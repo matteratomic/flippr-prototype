@@ -1,6 +1,6 @@
 <style>
 	.f-profile-container{
-		padding:100px 20px 20px 100px;
+		padding:100px 50px 20px 100px;
 		/* display:flex;
 		flex-direction:row;
 		justify-content:space-evenly;
@@ -11,6 +11,7 @@
 		flex-direction: row;
 		align-items: center;
 		justify-content:space-between;
+		
 	}
 	.f-profile-avatar{
 			display:flex;
@@ -60,7 +61,20 @@
 	}
 
 	.f-profile-username{
+		flex:1;
+		display:flex;
+		flex-direction:column;
+		align-items:flex-start;
+	}
+	.f-profile-username > p{
+		margin-top:5px;
+		font-weight:bold
+	}
 
+	@media (min-width:950px){
+		.f-profile-username{
+		margin-left:40px;
+		}
 	}
 
 	.f-profile-stats{
@@ -71,11 +85,10 @@
 	.f-profile-stats:hover{
 		transform:scale(1.1);
 	}
-	.fa-2x:hover{
+	.f-profile-stats:hover > .fa-2x{
 		color:#fda800!important;
 	}
-
-
+	
 	.f-profile-stats-likes{
 	
 	}
@@ -116,20 +129,99 @@
 		}
 		.f-profile-stats-description{
 			font-size:12px;
+			font-weight:bold
 		}
 	}
+
+	.f-profile-content{
+		display:flex;
+		flex-direction: column;
+		align-items:flex-start
+		padding:100px 20px 20px 100px;
+	}
+
+	@media (min-width:950px){
+		.f-profile-content{
+		margin-top:85px
+	}
+	}
+
+	@media (max-width:950px){
+		.f-profile-content{
+		margin-top:25px
+	}
+	}
+	.f-collections-wrapper{
+		display:flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content:space-evenly;
+		flex-wrap: wrap;
+		padding-top:30px
+	}
+	.f-collections-heading{
+		
+		display:flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.f-search-section{
+		display:flex;
+		flex-direction:row;
+		align-items: center;
+		justify-content:space-between;
+	}
+	.f-search-category{
+			color:black!important;
+			margin:100px 0 0 100px
+		}
+	.f-search-bar{
+	display:flex;
+	height:40px;
+	width:250px;
+	border: 1px solid #aaa;
+	box-sizing:border-box;
+	padding:10px;
+	border-radius:30px;
+	background-color:#eee
+	}
+
+	.f-search-bar > input{
+		background-color:#eee
+	}
+@media (max-width:950px){
+	.f-collections-heading{
+		flex-direction: row;
+		flex-wrap: wrap-reverse;
+	}
+	.f-collections-heading > .f-search-bar{
+		flex-basis:100%;
+		margin-bottom:30px;
+		align-self:center;
+	}
+	.f-collections-heading > .f-search-bar > input{
+		width:100%;
+	}
+}
+
+
 
 </style>
 <div class="f-profile-container">
 	 <!--Profile stats and page title-->
 	<div class="f-profile-stats-section">
-		<div style="background:url('{{avatar}}')" class="f-profile-avatar">
+		<div style="background:url('{{userData.avatar}}')" class="f-profile-avatar">
 			<div class="f-avatar-camera-dim">
 				<i style="color:white" class="fa fa-camera fa-2x"></i>
 				<p style="color:white">change profile pic</p>
 			</div>
 		</div>
-		<h1 class="f-profile-username">{{appUser}}</h1>
+		<div class="f-profile-username">
+		<h1>{{userData.username}}</h1>
+		<p>Creator of Flippr...Loves bacon</p>
+		</div>
 		<div class="f-profile-stats-wrapper">
 			<div class="f-profile-stats f-profile-stats-likes">
 				<i style="color:black" class="fa fa-thumbs-up fa-2x"></i>
@@ -150,9 +242,36 @@
 	</div>
 
 	<!--Profile content-->
-	<div class="profile-content">
+	<div class="f-profile-content">
 		
+		<div class="f-collections-heading">
+		<h1>Collections</h1>
+		<div  class="f-search-bar">
+			<i style="color:black;margin-right:5px" class="fa fa-search"></i>
+			<input type="search" placeholder="Search"/>
+		</div>
+		</div>
+			<h3>Art(3)</h3>
+		<div class="f-collections-wrapper">
+			{{#each flashcards.art}}
+			{{> flip-card}}
+			{{/each}}
+		</div>
 	</div>
-
-	
 </div>
+<script>
+
+	$(document).ready(function(){
+		$('.f-collections-wrapper').sortable()
+		let flipCards = document.querySelectorAll('.flip-card-inner')
+	
+	flipCards.forEach((card)=>{
+		card.addEventListener('click',function(){
+		this.classList.toggle('flip')
+	})		
+
+	})
+	})
+
+
+</script>
