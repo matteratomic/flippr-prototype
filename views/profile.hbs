@@ -174,6 +174,10 @@
 		justify-content: space-between;
 	}
 
+	.f-collections-heading > h1{
+		margin-bottom:10px
+	}
+
 	.f-search-section{
 		display:flex;
 		flex-direction:row;
@@ -188,7 +192,7 @@
 	display:flex;
 	height:40px;
 	width:250px;
-	border: 1px solid #aaa;
+	border: 2px solid #333;
 	box-sizing:border-box;
 	padding:10px;
 	border-radius:30px;
@@ -286,13 +290,21 @@
 	$(document).ready(function(){
 		$('.f-collections-wrapper').sortable()
 		let flipCards = document.querySelectorAll('.flip-card-inner')
-	
-	flipCards.forEach((card)=>{
-		card.addEventListener('click',function(){
-		this.classList.toggle('flip')
-	})		
+		let searchBar = document.querySelector('.f-search-bar > input')
 
+	
+		flipCards.forEach((card)=>{
+			card.addEventListener('click',function(){
+			this.classList.toggle('flip')
+		})		
 	})
+
+	searchBar.onfocus = function(){
+		let searchWrapper = document.querySelector('.f-search-bar')
+		this.style.backgroundColor = "#fff"
+		searchWrapper.setAttribute('style',`border-color:#fda800;
+			box-shadow: 0 0 10px #ffc000;background-color:#fff`)
+	}
 	})
 
 

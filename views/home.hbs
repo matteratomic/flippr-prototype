@@ -92,7 +92,7 @@
 	height:40px;
 	width:250px;
 	margin:100px 10px 0 0;
-	border: 1px solid #aaa;
+	border: 2px solid #333;
 	box-sizing:border-box;
 	padding:10px;
 	border-radius:30px;
@@ -123,18 +123,7 @@
 <div class="container flip-card-container">
 {{#if flipcards}}
 {{#each flipcards}}
-<div class="flip-card-wrapper">
-	<div class="flip-card-inner">
-		<div class="flip-card flip-card-back">
-			<h3>Metha</h3>
-			<p class="lead">{{subtitle}}</p>
-		</div>
-		<div style="background-image:url('{{url}}')" class="flip-card flip-card-front">
-			<h2>{{title}}</h2>
-			<p class="lead">{{subtitle}}</p>
-		</div>
-	</div>
-</div>
+{{> flip-card}}
 {{/each }}
 {{else}}
 <div class="flip-card-wrapper">
