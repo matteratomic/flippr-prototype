@@ -170,7 +170,7 @@
 	.f-collections-wrapper > * {
 		flex:0 0 auto;
 		margin-right:10px!important;
-		padding:20px
+		padding:25px
 	}
 
 
@@ -203,11 +203,11 @@
 	box-sizing:border-box;
 	padding:10px;
 	border-radius:30px;
-	background-color:#eee
+	background-color:#fff
 	}
 
-	.f-search-bar > input{
-		background-color:#eee
+	.f-search-bar input{
+		background-color:#fff
 	}
 @media (max-width:950px){
 
@@ -293,25 +293,108 @@
 
 	.f-profile-modal{
 		visibility:hidden;
+		opacity:0;
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100vw;
 		height: 100vh;
 		z-index:20;
+		overflow-x: hidden;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		background-color:rgba(255,255,255,0.9);
+		transition: all 0.5s;
+	}
+
+	.f-modal-default-screen{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		background-color:rgba(255,255,255,0.9)
+		transition: all 0.5s;
+	}
+	.modal-screen-title{
+		position:absolute;
+		top: 3.5%;
+		left: 7.5%;
+	}
+	@media (max-width:950px){
+		.modal-screen-title{
+		position:absolute;
+		top: 3.5%;
+		left: 15%;
+	}
+	}
+
+	.f-modal-profile-screen{
+		visibility: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		margin-left:200vw;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.5s;
+	}
+	.f-modal-collections-screen{
+		visibility: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		margin-left:200vw;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.5s;
+	}
+	.f-modal-logout-screen{
+		visibility: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		margin-left:200vw;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.5s;
 	}
 
 	.f-modal-brand{
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		margin-top:-50px;
 		margin-bottom:50px
 	}
 
+	.f-profile-modal-back{
+		z-index:20;
+		position:absolute;
+		top:2%;
+		left:2%;
+		transform:scale(0.5);
+	}
+
 	.f-profile-modal-cancel{
+		z-index:20;
 		position:absolute;
 		top:2%;
 		right:2%;
@@ -324,7 +407,12 @@
 		align-items: center;
 		justify-content:center;
 		font-family: 'Bungee',cursive;
+		cursor: pointer;
 		margin:10px;
+		transition:color 0.3s;
+	}
+	.f-profile-modal-action-wrapper:hover{
+		color:#fda800;
 	}
 	.f-profile-modal-action-fab{
 		box-shadow: 0 0 10px black;
@@ -343,6 +431,7 @@
 		animation-delay: 1s;
 		animation-fill-mode:forwards;
 	}
+
 	.f-profile-modal-action-fab:active{
 		transform:scale(1.05);
 	}
@@ -350,7 +439,7 @@
 		display:flex;
 		flex-direction:row;
 		justify-content:space-between;
-		width:250px;
+		width:315px;
 	}
 
 
@@ -360,7 +449,7 @@
 	<div class="f-profile-stats-section">
 		<div style="background:url('{{userData.avatar}}')" class="f-profile-avatar">
 			<div class="f-avatar-camera-dim">
-				<i style="color:white" class="fa fa-camera fa-2x"></i>
+				<i style="color:white;margin-bottom:10px" class="fa fa-camera fa-2x"></i>
 				<p style="color:white">Change profile pic</p>
 			</div>
 		</div>
@@ -393,7 +482,7 @@
 		<div class="f-collections-heading">
 
 		<div class="f-collections-stats">
-			<h1>Collections</h1>
+			<h1>My Collections</h1>
 			<span class="f-collection-count">
 			{{#noOfKeys flashcards}}{{/noOfKeys}}
 		</span></div>
@@ -420,37 +509,78 @@
 	<i class="f-profile-modal-cancel fa fa-times fa-3x"
 	 style="color:black" >
 	</i>
-
+<!--Start of default modal screen-->
+<div class="f-modal-default-screen">
 	<div class="f-brand f-modal-brand">
 		<img class="flippr-logo" src="/assets/flippr.png" alt="" height=130 width=130/>
 	</div>
 
 	<div class="f-profile-modal-action-wrapper">
-		<div class="modal-action">
+		<div class="modal-action modal-action-profile">
 			<div class="f-profile-modal-action-fab">
-				<i style="color:#fda800" class="fa fa-plus"></i>
+				<i style="color:#fda800" class="fa fa-user"></i>
+			</div>
+				Edit Profile
+		</div>
+	</div>
+	<div class="f-profile-modal-action-wrapper">
+		<div class="modal-action  modal-action-collections">
+			<div class="f-profile-modal-action-fab">
+				<i style="color:#fda800" class="fa fa-edit"></i>
 			</div>
 				Edit collections
 		</div>
 	</div>
-
 		<div class="f-profile-modal-action-wrapper">
-		<div class="modal-action">
+		<div class="modal-action  modal-action-logout">
 			<div class="f-profile-modal-action-fab">
-				<i style="color:#fda800" class="fa fa-plus"></i>
-			</div>
-				Add collection
-		</div>
-	</div>
-
-		<div class="f-profile-modal-action-wrapper">
-		<div class="modal-action">
-			<div class="f-profile-modal-action-fab">
-				<i style="color:#fda800" class="fa fa-plus"></i>
+				<i style="color:#fda800" class="fa fa-sign-out"></i>
 			</div>
 				Log out
 		</div>
 	</div>
+</div>
+<!--End of default modal screen-->
+
+<!--Start of profile modal screen-->
+<div class="f-modal-profile-screen">
+	<i class="f-profile-modal-back fa fa-arrow-left fa-3x"
+	 style="color:black" >
+	</i>
+	
+<h2  class="modal-screen-title">Profile</h2>
+
+		
+</div>
+<!--End of profile modal screen-->
+
+<!--Start of collections modal screen-->
+<div class="f-modal-collections-screen">
+	<i class="f-profile-modal-back fa fa-arrow-left fa-3x"
+	 style="color:black" >
+	</i>
+
+<h2 class="modal-screen-title">Collections</h2>
+	{{#each flashcards}}
+		<p>{{@key}}-{{this.length}}</p>
+	{{/each}}
+		
+</div>
+<!--End of collections modal screen-->
+
+<!--Start of logout modal screen-->
+<div class="f-modal-logout-screen">
+	<i class="f-profile-modal-back fa fa-arrow-left fa-3x"
+	 style="color:black" >
+	</i>
+
+<h2 class="modal-screen-title">Log out</h2>
+
+		
+</div>
+<!--End of logout modal screen-->
+
+
 </div>
 <div class="f-profile-modal-fab">
 	<i style="color:#fda800" class="fa fa-plus"></i>
@@ -462,16 +592,70 @@
 		$('.f-collections-wrapper').sortable()
 		let flipCards = document.querySelectorAll('.flip-card-inner')
 		let searchBar = document.querySelector('.f-search-bar > input')
+		
 		let modal = document.querySelector('.f-profile-modal')
+		
 		let displayModalfab = document.querySelector('.f-profile-modal-fab')
 		let cancelModalFab = document.querySelector('.f-profile-modal-cancel')
+		let modalBackButtons = document.querySelectorAll('.f-profile-modal-back')
+
+		let defaultModalScreen = document.querySelector('.f-modal-default-screen')
+		let profileModalScreen = document.querySelector('.f-modal-profile-screen')
+		let collectionsModalScreen = document.querySelector('.f-modal-collections-screen')
+		let collectionsLogOutScreen = document.querySelector('.f-modal-logout-screen')
+		
+		let modalProfileAction = document.querySelector('.modal-action-profile')
+		let modalCollectionsAction = document.querySelector('.modal-action-collections')
+		let modalLogOutAction = document.querySelector('.modal-action-logout')
+
+		modalProfileAction.onclick = function(){
+			defaultModalScreen.style.marginLeft = "-200vw";
+			profileModalScreen.style.marginLeft = "0vw";
+			profileModalScreen.style.visibility = "visible";
+		}
+
+		modalCollectionsAction.onclick = function(){
+			defaultModalScreen.style.marginLeft = "-200vw";
+			collectionsModalScreen.style.marginLeft = "0vw";
+			collectionsModalScreen.style.visibility = "visible";
+		}
+
+		modalLogOutAction.onclick = function(){
+			defaultModalScreen.style.marginLeft = "-200vw";
+			collectionsLogOutScreen.style.marginLeft = "0vw";
+			collectionsLogOutScreen.style.visibility = "visible";
+		}
+
+		
+
+		modalBackButtons.forEach((button)=>{
+			button.onclick = function(){
+			defaultModalScreen.style.marginLeft = "0vw";
+
+			profileModalScreen.style.marginLeft = "200vw";
+			profileModalScreen.style.visibility = "hidden";
+
+			collectionsModalScreen.style.marginLeft = "200vw";
+			collectionsModalScreen.style.visibility = "hidden";
+
+			collectionsLogOutScreen.style.marginLeft = "200vw";
+			collectionsLogOutScreen.style.visibility = "hidden";
+
+		}
+		})
+
 		
 
 		displayModalfab.onclick = function(){
-		modal.setAttribute('style','visibility:visible')
+		modal.setAttribute('style','visibility:visible;opacity:1');
+
+		$('.f-profile-modal').children().css({visibility:'visible',opacity:1})
+		
 		}	
 		cancelModalFab.onclick = function(){
-		modal.setAttribute('style','visibility:hidden')
+		modal.setAttribute('style','visibility:hidden;opacity:0')
+		$('.f-profile-modal').children().css({visibility:'hidden',opacity:0})
+		
 		}	
 	
 		flipCards.forEach((card)=>{
@@ -486,9 +670,36 @@
 		searchWrapper.setAttribute('style',`border-color:#fda800;
 			box-shadow: 0 0 10px #ffc000;background-color:#fff`)
 	}
+
+	searchBar.onblur = function(){
+		let searchWrapper = document.querySelector('.f-search-bar')
+		this.style.backgroundColor = "#fff"
+		searchWrapper.setAttribute('style',`border-color:#666;
+		box-shadow: 0 0 0px #666;`)
+	}
 	})
-
-	
-
-
 </script>
+<script>
+	let pressTimer
+
+	$(document).ready(()=>{
+		$('.flip-card-front').on({
+			mousedown:function(){
+				pressTimer = setTimeout(()=>{
+					alert($(this).find('h2').text())
+				},700)
+			},
+			mouseup:function(){
+			clearInterval(pressTimer)
+			},
+			touchstart:function(){
+				pressTimer = setTimeout(()=>{
+					alert($(this).find('h2').text())
+				},700)
+			},
+			touchend:function(){
+			clearInterval(pressTimer)
+			},
+		})
+	})
+	</script>

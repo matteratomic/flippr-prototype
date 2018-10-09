@@ -83,6 +83,9 @@ router.get('/cards',verifyToken,(req,res)=>{
 
 router.get('/home',verifyToken,home)
 router.get('/profile',verifyToken,profile)
+router.get('/terms',(req,res)=>{
+	res.render('terms&conditions')
+})
 
 
 

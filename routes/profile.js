@@ -19,9 +19,25 @@ flashcards:{
 	title:"Lorem ipsum dolor sit",
 	subtitle:`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, beatae.
 	`},
+	{url:"https://images.unsplash.com/photo-1516188003451-593901026058?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=26702bdaafe645b659e7002b6c460e95&auto=format&fit=crop&w=750&q=80",
+	title:"Lorem ipsum dolor sit",
+	subtitle:`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, beatae.
+	`},
 	],
 	German:[
 		{url:"https://images.unsplash.com/photo-1532708773901-d9468eed9135?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9c6a5c069b64266f649e561ea09aec3d&auto=format&fit=crop&w=401&q=80",
+	title:"Lorem ipsum dolor sit",
+	subtitle:`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, beatae.
+	`},
+	{url:"https://images.unsplash.com/photo-1516188003451-593901026058?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=26702bdaafe645b659e7002b6c460e95&auto=format&fit=crop&w=750&q=80",
+	title:"Lorem ipsum dolor sit",
+	subtitle:`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, beatae.
+	`},
+	{url:"https://images.unsplash.com/photo-1533518463841-d62e1fc91373?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e6304386ba5696891b580989892c66b5&auto=format&fit=crop&w=750&q=80",
+	title:"Lorem ipsum dolor sit",
+	subtitle:`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, beatae.
+	`},
+	{url:"https://images.unsplash.com/photo-1532708773901-d9468eed9135?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9c6a5c069b64266f649e561ea09aec3d&auto=format&fit=crop&w=401&q=80",
 	title:"Lorem ipsum dolor sit",
 	subtitle:`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, beatae.
 	`},
