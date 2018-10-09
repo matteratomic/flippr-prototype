@@ -9,8 +9,13 @@ exports = module.exports = function(){
 		}
 	}
 	_helpers.noOfKeys = function(obj){
-		let num = Object.keys(obj).length
-		return num
+		if(obj){
+			let num = Object.keys(obj).length
+			return num
+		}else{
+			return 0
+		}
+		
 	}
 	return _helpers
 }

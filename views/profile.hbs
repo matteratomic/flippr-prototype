@@ -81,6 +81,7 @@
 		cursor:pointer;
 		transition-property:all;
 		transition-duration: 0.1s;
+		user-select: none
 	}
 	.f-profile-stats:hover{
 		transform:scale(1.1);
@@ -493,7 +494,8 @@
 		</div>
 
 		</div>
-	{{#each flashcards}}
+		{{#if flashcards}}
+		{{#each flashcards}}
 		<h2>{{@key}} ({{this.length}})</h2>
 		<div class="f-collections-wrapper">
 			{{#each this}}
@@ -501,6 +503,10 @@
 			{{/each}}
 		</div>
 	{{/each}}
+			{{else}}
+			{{> flip-card title="No collections" url="https://images.unsplash.com/photo-1487452066049-a710f7296400?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c96c7cb987e31ac4a1210daf1fb6c26c&auto=format&fit=crop&w=751&q=80" subtitle="Click the plus button to create one"}}
+		{{/if}}
+	
 		
 
 	</div>
