@@ -41,7 +41,6 @@
 		user-select: none;
 		animation-name:fade-in;
 		animation-duration:1s;
-		animation-fill-forwards;
 	}
 	@keyframes fade-in{
 		0%{
@@ -70,7 +69,7 @@
 <div class="flip-card-wrapper">
 	<div class="flip-card-inner">
 		<div class="flip-card flip-card-back">
-			<h3>Metha</h3>
+			<h3>{{title}}</h3>
 			<p class="lead">{{subtitle}}</p>
 		</div>
 		<div style="background-image:url('{{url}}')" class="flip-card flip-card-front">

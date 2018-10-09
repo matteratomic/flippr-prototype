@@ -27,7 +27,7 @@ flashcards:{
 	`},
 	]
 }
-},
+}, 
 {username:"MrFantastic",
 email:"mrfantastic@gmail.com",
 password:"susan",
@@ -37,12 +37,11 @@ avatar:
 
 
 exports = module.exports = function(req,res){
-
 	authenticate(req).then(({username})=>{
 
 	res.locals.flashcards = users.filter((user)=>{
 		return user.username === username
-	})[0].flashcards
+	})[0].flashcards;
 
 	res.locals.section = 'profile'
 	}).then(

@@ -1,6 +1,6 @@
 <style>
 	.f-profile-container{
-		padding:100px 50px 20px 100px;
+		padding:150px 50px 20px 100px;
 		/* display:flex;
 		flex-direction:row;
 		justify-content:space-evenly;
@@ -111,10 +111,16 @@
 	}
 		.f-profile-avatar{
 			margin-bottom:25px;
+			min-width:150px;
+			height:150px;
 		}
 
 		.f-profile-username{
-		
+		font-size: 15px
+		}
+
+		.f-profile-username p{
+		font-size: 12px
 		}
 		
 		.f-profile-stats-wrapper > * {
@@ -158,6 +164,7 @@
 		flex-wrap: nowrap;
 		overflow-x: auto;
 		padding-top:30px;
+		margin-bottom:50px;
 	}
 
 	.f-collections-wrapper > * {
@@ -227,7 +234,124 @@
 		width:100%;
 	}
 }
+.f-collections-stats{
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+	justify-content:center;
+	margin-bottom:25px;
+}
 
+.f-collection-count{
+	font-size:15px;
+	font-weight:bold;
+	border-radius:50px;
+	width:22px;
+	height:22px;
+	color:black;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	background-color:#fda800;
+	align-self:flex-start;
+	margin-left:5px;
+}
+
+
+.f-profile-modal-fab{
+		box-shadow: 0 0 10px black;
+		position:fixed;
+		bottom:70px;
+		right:10px;
+		width:50px;
+		height:50px;
+		border-radius:50px;
+		background-color:black;
+		display:flex;
+		align-items:center;
+		justify-content: center;
+		transform:scale(0);
+		transition-property:scale;
+		transition-duration:1s;
+		animation-name:fade-in;
+		animation-duration:1s;
+		animation-delay: 1s;
+		animation-fill-mode:forwards;
+	}
+	.f-profile-modal-fab:active{
+		transform:scale(1.05);
+	}
+
+	@keyframes fade-in{
+		0%{
+			transform:scale(0);
+		}
+		100%{
+			transform:scale(1);
+		}
+	}
+
+	.f-profile-modal{
+		visibility:hidden;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		z-index:20;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background-color:rgba(255,255,255,0.9)
+	}
+
+	.f-modal-brand{
+		margin-top:-50px;
+		margin-bottom:50px
+	}
+
+	.f-profile-modal-cancel{
+		position:absolute;
+		top:2%;
+		right:2%;
+		transform:scale(0.5);
+	}
+	.f-profile-modal-action-wrapper{
+		width:75%;
+		display:flex;
+		flex-direction:row;
+		align-items: center;
+		justify-content:center;
+		font-family: 'Bungee',cursive;
+		margin:10px;
+	}
+	.f-profile-modal-action-fab{
+		box-shadow: 0 0 10px black;
+		width:50px;
+		height:50px;
+		border-radius:50px;
+		background-color:black;
+		display:flex;
+		align-items:center;
+		justify-content: center;
+		transform:scale(0);
+		transition-property:scale;
+		transition-duration:1s;
+		animation-name:fade-in;
+		animation-duration:1s;
+		animation-delay: 1s;
+		animation-fill-mode:forwards;
+	}
+	.f-profile-modal-action-fab:active{
+		transform:scale(1.05);
+	}
+	.modal-action{
+		display:flex;
+		flex-direction:row;
+		justify-content:space-between;
+		width:250px;
+	}
 
 
 </style>
@@ -237,7 +361,7 @@
 		<div style="background:url('{{userData.avatar}}')" class="f-profile-avatar">
 			<div class="f-avatar-camera-dim">
 				<i style="color:white" class="fa fa-camera fa-2x"></i>
-				<p style="color:white">change profile pic</p>
+				<p style="color:white">Change profile pic</p>
 			</div>
 		</div>
 		<div class="f-profile-username">
@@ -267,14 +391,21 @@
 	<div class="f-profile-content">
 		
 		<div class="f-collections-heading">
-		<h1>Collections</h1>
+
+		<div class="f-collections-stats">
+			<h1>Collections</h1>
+			<span class="f-collection-count">
+			{{#noOfKeys flashcards}}{{/noOfKeys}}
+		</span></div>
+
 		<div  class="f-search-bar">
 			<i style="color:black;margin-right:5px" class="fa fa-search"></i>
 			<input type="search" placeholder="Search"/>
 		</div>
+
 		</div>
 	{{#each flashcards}}
-		<h3>{{@key}} ({{this.length}})</h3>
+		<h2>{{@key}} ({{this.length}})</h2>
 		<div class="f-collections-wrapper">
 			{{#each this}}
 				{{> flip-card}}
@@ -285,13 +416,63 @@
 
 	</div>
 </div>
+<div class="f-profile-modal">
+	<i class="f-profile-modal-cancel fa fa-times fa-3x"
+	 style="color:black" >
+	</i>
+
+	<div class="f-brand f-modal-brand">
+		<img class="flippr-logo" src="/assets/flippr.png" alt="" height=130 width=130/>
+	</div>
+
+	<div class="f-profile-modal-action-wrapper">
+		<div class="modal-action">
+			<div class="f-profile-modal-action-fab">
+				<i style="color:#fda800" class="fa fa-plus"></i>
+			</div>
+				Edit collections
+		</div>
+	</div>
+
+		<div class="f-profile-modal-action-wrapper">
+		<div class="modal-action">
+			<div class="f-profile-modal-action-fab">
+				<i style="color:#fda800" class="fa fa-plus"></i>
+			</div>
+				Add collection
+		</div>
+	</div>
+
+		<div class="f-profile-modal-action-wrapper">
+		<div class="modal-action">
+			<div class="f-profile-modal-action-fab">
+				<i style="color:#fda800" class="fa fa-plus"></i>
+			</div>
+				Log out
+		</div>
+	</div>
+</div>
+<div class="f-profile-modal-fab">
+	<i style="color:#fda800" class="fa fa-plus"></i>
+</div>
+
 <script>
 
 	$(document).ready(function(){
 		$('.f-collections-wrapper').sortable()
 		let flipCards = document.querySelectorAll('.flip-card-inner')
 		let searchBar = document.querySelector('.f-search-bar > input')
+		let modal = document.querySelector('.f-profile-modal')
+		let displayModalfab = document.querySelector('.f-profile-modal-fab')
+		let cancelModalFab = document.querySelector('.f-profile-modal-cancel')
+		
 
+		displayModalfab.onclick = function(){
+		modal.setAttribute('style','visibility:visible')
+		}	
+		cancelModalFab.onclick = function(){
+		modal.setAttribute('style','visibility:hidden')
+		}	
 	
 		flipCards.forEach((card)=>{
 			card.addEventListener('click',function(){
@@ -306,6 +487,8 @@
 			box-shadow: 0 0 10px #ffc000;background-color:#fff`)
 	}
 	})
+
+	
 
 
 </script>

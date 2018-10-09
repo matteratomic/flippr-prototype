@@ -8,5 +8,9 @@ exports = module.exports = function(){
 			return options.inverse(this)
 		}
 	}
+	_helpers.noOfKeys = function(obj){
+		let num = Object.keys(obj).length
+		return num
+	}
 	return _helpers
 }
